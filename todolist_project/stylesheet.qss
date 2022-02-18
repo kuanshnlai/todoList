@@ -1,0 +1,18 @@
+MainWindow{
+	background-color : black;
+}
+QWidget#qt_calendar_navigationbar{
+	background-color: qlineargradient(spread:pad,x1:1,y1:0,x2:0,y2:0,stop:0 #0973AB,stop:1 #098DCE);
+}
+#qt_calendar_nextmonth{
+	background-color : qlineargradient(spread:pad,x1:1,y1:0,x2:0,y2:0,stop:0 #0973AB,stop:1 #098DCE);
+	qproperty-icon : url(:/icon/icon/next_month.png);
+}
+#qt_calendar_prevmonth{
+	background-color : qlineargradient(spread:pad,x1:1,y1:0,x2:0,y2:0,stop:0 #0973AB,stop:1 #098DCE);
+	qproperty-icon : url(:/icon/icon/prev_month.png);
+}
+QLabel{
+	background-color:white;
+}
+

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/next_month.png</file>
+        <file>icon/prev_month.png</file>
+    </qresource>
+    <qresource prefix="/stylesheet">
+        <file>stylesheet.qss</file>
+    </qresource>
+</RCC>
