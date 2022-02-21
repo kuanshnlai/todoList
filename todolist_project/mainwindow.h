@@ -8,6 +8,7 @@
 #include <QStandardItemModel>
 #include <QListView>
 #include "calendar.h"
+#include "dialog.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -34,5 +35,6 @@ private:
     QStandardItemModel* model;
     QListView* view;
     void dateEditEvent();
+    addEventDialog* dialog;
 };
 #endif // MAINWINDOW_H

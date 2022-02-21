@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     calendar.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp\
+    Dialog.cpp
 
 HEADERS += \
     calendar.h \
+    dialog.h \
     mainwindow.h
 
 FORMS += \

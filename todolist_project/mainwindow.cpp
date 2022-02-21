@@ -107,20 +107,5 @@ void MainWindow::calendarDateChange(){
 void MainWindow::dateEditEvent(){
     //create a popup window
     qDebug()<<"add button click";
-    QDialog d;
-
-    QGridLayout *layout = new QGridLayout();
-    QLabel *eventName = new QLabel("event Name",&d);
-    QLabel *eventType = new QLabel("event type",&d);
-    QLineEdit *inputText = new QLineEdit();
-    QComboBox *comboBox = new QComboBox();
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
-    layout->addWidget(eventName,0,0,1,2);
-    layout->addWidget(inputText,0,1,1,4);
-    layout->addWidget(eventType,1,0,1,2);
-    layout->addWidget(comboBox,1,1,1,4);
-    layout->addWidget(buttonBox,3,0);
-    d.setLayout(layout);
-    d.show();
-    Sleep(1000);
+    dialog = new addEventDialog();
 }
