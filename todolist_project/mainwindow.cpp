@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QDialogButtonBox>
 #include <windows.h>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -47,11 +48,16 @@ void MainWindow::createDateInfo(){
     QString str = calendar->selectedDate().toString("MMM dd");
     date->setText(str);
     date->setParent(this);
-    model = new QStandardItemModel();
-    view = new QListView();
+    model = new QStandardItemModel(0,2,this);
+    view = new QTableView();
+    model->setHorizontalHeaderItem(0,new QStandardItem(QString("Name")));
+    model->setHorizontalHeaderItem(1,new QStandardItem(QString("Type")));
     for(int i=0;i<3;i++){
-        QStandardItem *item = new QStandardItem(QString("%1").arg(i));
-        model->appendRow(item);
+        QStandardItem *name = new QStandardItem(QString("%1").arg(i));
+        QStandardItem *type = new QStandardItem(QString("%1").arg(i+5));
+        int rowCount = model->rowCount();
+        model->setItem(rowCount,0,name);
+        model->setItem(rowCount,1,type);
     }
     view->setModel(model);
     view->setParent(this);
@@ -108,4 +114,26 @@ void MainWindow::dateEditEvent(){
     //create a popup window
     qDebug()<<"add button click";
     dialog = new addEventDialog();
+    qDebug()<<"print something to see what happen";
+    if(dialog->getState() == QDialog::Accepted){
+        qDebug()<<"Event name is "<<dialog->getName();
+        qDebug()<<"Event type is "<<dialog->getType();
+        QString name = dialog->getName();
+        QString type = dialog->getType();
+        QDate date = calendar->selectedDate();
+        addEvent(date,name,type);
+    }
+    delete dialog;
+}
+void MainWindow::testSlot(){
+    qDebug()<<"trigger";
+}
+void MainWindow::addEvent(const QDate& date,const QString& name,const QString& type){
+    qDebug()<<"date";
+    QStandardItem *item1 = new QStandardItem(name);
+    QStandardItem *item2 = new QStandardItem(type);
+    int rowCount = model->rowCount();
+    model->setItem(rowCount,0,item1);
+    model->setItem(rowCount,1,item2);
+    view->setModel(model);
 }

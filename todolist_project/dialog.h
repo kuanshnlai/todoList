@@ -9,10 +9,13 @@
 class addEventDialog : QDialog{
     Q_OBJECT
 public:
+    using QDialog::QObject;
     addEventDialog(){
-        createLayout();
+        initDialog();
     }
+    void initDialog();
     void createLayout();
+    void handleEvent();
     virtual ~addEventDialog(){
         delete layout;
         delete eventName;
@@ -20,7 +23,11 @@ public:
         delete inputText;
         delete comboBox;
         delete buttonBox;
+        qDebug()<<"destructor";
     }
+    QString getType()const{return eventTypeValue;};
+    QString getName()const{return eventNameValue;};
+    int getState()const{return state;};
 private:
     QGridLayout *layout;
     QLabel *eventName;
@@ -28,6 +35,10 @@ private:
     QLineEdit *inputText;
     QComboBox *comboBox;
     QDialogButtonBox *buttonBox;
+    int state = 0;
+    //store the input
+    QString eventNameValue = "";
+    QString eventTypeValue = "";
 };
 
 #endif // DIALOG_H

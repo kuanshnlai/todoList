@@ -17,12 +17,25 @@ void addEventDialog::createLayout(){
     this->setLayout(layout);
     connect(buttonBox,&QDialogButtonBox::accepted,this,&addEventDialog::accept);
     connect(buttonBox,&QDialogButtonBox::rejected,this,&addEventDialog::reject);
-    int r = exec();
-    if(r == QDialog::Accepted){
-        qDebug()<<"accept";
-    }
     qDebug()<<"create finish";
 }
 
+void addEventDialog::initDialog(){
+    createLayout();
+    state = exec();
+    handleEvent();
 
+}
+void addEventDialog::handleEvent(){
+    if(state == QDialog::Accepted){
+        qDebug()<<"Accepted!";
+        eventNameValue = inputText->text();
+        eventTypeValue = comboBox->currentText();
+    }
+    else if(state == addEventDialog::Rejected){
+        qDebug()<<"Rejected!";
+        eventNameValue = "";
+        eventTypeValue = "";
+    }
 
+}

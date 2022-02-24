@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QCalendar>
 #include <QStandardItemModel>
-#include <QListView>
+#include <QTableView>
 #include "calendar.h"
 #include "dialog.h"
 QT_BEGIN_NAMESPACE
@@ -25,6 +25,8 @@ public:
     void calendarDateChange();
     void createCalendar();
     void createDateInfo();
+public slots:
+        void testSlot();
 private:
     int window_width,window_height;
     Ui::MainWindow *ui;
@@ -33,8 +35,12 @@ private:
     QPushButton* delButton;
     Calendar* calendar;
     QStandardItemModel* model;
-    QListView* view;
+    QTableView* view;
     void dateEditEvent();
+    void addEvent(const QDate&,const QString&,const QString&);
     addEventDialog* dialog;
+    //
+
+
 };
 #endif // MAINWINDOW_H
